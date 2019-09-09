@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.retail</groupId>
-	<artifactId>bill-discounts</artifactId>
+	<artifactId>retail-store-bill-discounts</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>bill-discounts</name>
+	<name>retail-store-bill-discounts</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -21,7 +21,7 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- vv https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<!--https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-lang3</artifactId>
