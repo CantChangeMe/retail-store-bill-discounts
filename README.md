@@ -1,6 +1,19 @@
 # Retail-store-bill-discounts
 This project implements different kinds of discounts for a small retail website.
 
+# Activities done:
+- Clean and easy to understand code using Checkstyle
+
+	- You can run the checkstyle using below command:
+	
+    	mvn checkstyle:checkstyle
+
+- Code coverage using cobertura mvn plugin
+
+	- Run the below  command for code coverage report:
+
+		mvn cobertura:cobertura 
+
 # Assumption Made:
 1.Mutually exclusive discounts are applied first.
 	i.e. discounts related to whether, user is Employee,Affiliate or Customer since more than two years.
