@@ -95,13 +95,6 @@ public class NetMultiplesDiscountTest {
         }
 
     }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testIsApplicableInvalidDiscount() {
-        bill.setNetPayable(new BigDecimal(99));
-        discount.setNetMultiples(null);
-        discount.isDiscountApplicableOnTheBill(bill);
-    }
     
     @Test
     public void testIsApplicable() {
@@ -122,37 +115,6 @@ public class NetMultiplesDiscountTest {
         discount.setCategoriesWithNoPercentageDiscounts(null);
         assertTrue(discount.isDiscountApplicableOnTheBill(bill));
         
-    }
-
-    // ---- Calculate tests
-
-    @Test
-    public void testCalculateInvalid() {
-        try {
-            discount.calculateDiscountOnTheBill(null);
-            fail("expected exception not thrown");
-        } catch(IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-
-
-        // netPayable is null
-        try {
-            discount.calculateDiscountOnTheBill(bill);
-            fail("expected exception not thrown");
-        } catch(IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-
-        discount.setDiscount(null);
-        bill.setNetPayable(new BigDecimal(120));
-
-        try {
-            discount.calculateDiscountOnTheBill(bill);
-            fail("expected exception not thrown");
-        } catch(IllegalArgumentException e) {
-            e.printStackTrace();
-        }
     }
 
     @Test

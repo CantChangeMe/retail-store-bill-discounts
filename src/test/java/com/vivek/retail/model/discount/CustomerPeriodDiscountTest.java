@@ -1,11 +1,7 @@
 package com.vivek.retail.model.discount;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -21,7 +17,6 @@ import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
 import com.vivek.retail.app.constants.UserType;
 import com.vivek.retail.model.bill.Bill;
-import com.vivek.retail.model.discount.CustomerPeriodDiscount;
 import com.vivek.retail.model.user.User;
 
 public class CustomerPeriodDiscountTest {
