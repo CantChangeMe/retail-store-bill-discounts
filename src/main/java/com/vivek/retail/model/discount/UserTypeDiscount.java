@@ -12,6 +12,12 @@ public class UserTypeDiscount extends GenericDiscount {
     
     private UserType userType;
     
+    /**
+     * @param type
+     * @param discount
+     * @param categoriesWithNoPercentageDiscount
+     * @param userType
+     */
     public UserTypeDiscount(DiscountType type, BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount, UserType userType) {
         super(type, discount, categoriesWithNoPercentageDiscount);
         if(userType == null) {

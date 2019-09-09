@@ -11,6 +11,12 @@ import com.vivek.retail.model.bill.Bill;
 public class NetMultiplesDiscount extends GenericDiscount {
     
     private BigDecimal netMultiples;
+    
+    /**
+     * @param discount
+     * @param categoriesWithNoPercentageDiscount
+     * @param netMultiples
+     */
     public NetMultiplesDiscount(BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount, 
             BigDecimal netMultiples) {
         

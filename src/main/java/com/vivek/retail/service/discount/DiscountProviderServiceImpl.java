@@ -20,6 +20,10 @@ public class DiscountProviderServiceImpl implements DiscountProviderService {
     
     private List<Discount> alwaysApplicableDiscountsList = new ArrayList<>();    
     private List<Discount> mutuallyExclusiveDiscountsList = new ArrayList<>();
+    
+    /**
+     *  Create service for the system which includes different kind of discounts it provides
+     */
     public DiscountProviderServiceImpl() {
         super();
         

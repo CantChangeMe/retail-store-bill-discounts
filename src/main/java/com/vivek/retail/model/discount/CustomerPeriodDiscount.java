@@ -13,6 +13,12 @@ public class CustomerPeriodDiscount extends GenericDiscount {
     
     private Integer customerSinceMonths;
     
+    /**
+     * @param type
+     * @param discount
+     * @param categoriesWithNoPercentageDiscount
+     * @param customerSinceMonths
+     */
     public CustomerPeriodDiscount(DiscountType type, BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount,
             Integer customerSinceMonths) {
         
@@ -20,6 +26,9 @@ public class CustomerPeriodDiscount extends GenericDiscount {
         this.customerSinceMonths = customerSinceMonths;
     }
 
+    /**
+     * Checks if the bill is eligible for discount.
+     */
     public boolean isDiscountApplicableOnTheBill(Bill bill) {
         
         if((bill == null) || (bill.getUser() == null) 

@@ -16,6 +16,11 @@ public abstract class GenericDiscount implements Discount {
     
     private Set<Category> categoriesWithNoPercentageDiscount;
     
+    /**
+     * @param type discount type
+     * @param discount discount 
+     * @param categoriesWithNoPercentageDiscount categories to exclude
+     */
     public GenericDiscount(DiscountType type, BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount) {
         super();
         

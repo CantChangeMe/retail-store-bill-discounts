@@ -7,6 +7,7 @@ import com.vivek.retail.model.discount.Discount;
 public interface DiscountProviderService {
     
     List<Discount> getAlwayApplicableDiscounts();
+    
     List<Discount> getMutuallyExclusiveDiscounts();
 
 }

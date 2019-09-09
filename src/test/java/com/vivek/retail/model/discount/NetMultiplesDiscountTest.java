@@ -35,7 +35,6 @@ public class NetMultiplesDiscountTest {
     @Before
     public void setUp() throws Exception {
 
-        // 3 years ago
         Date date = DateUtils.addYears(new Date(), -3);
 
         user = new User(date, UserType.EMPLOYEE);
@@ -134,13 +133,10 @@ public class NetMultiplesDiscountTest {
 
         bill.setCategory(Category.ELECTRONICS);
 
-        // $5 off for every $100 from a net of $450
         BigDecimal amount = discount.calculateDiscountOnTheBill(bill);
         assertNotNull(amount);
 
         assertEquals(new BigDecimal(20.00).setScale(2), amount);
-
-        // $10 off for every $200 from a net of $990
         bill.setNetPayable(new BigDecimal(990));
         discount.setNetMultiples(new BigDecimal(200));
         discount.setDiscount(new BigDecimal(10));

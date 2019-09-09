@@ -7,6 +7,14 @@ import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.model.discount.Discount;
 import com.vivek.retail.model.user.User;
 
+
+
+/**
+ * @author c_vivek.kumar
+ *
+ *This class Bill has information about user ,net amout ,bill category and different kind
+ *of discounts he is eligible for.
+ */
 public class Bill{
     
     private User user;
@@ -20,7 +28,13 @@ public class Bill{
     private List<Discount> alwaysApplicableDiscounts;
     
     private List<Discount> mutuallyExclusiveDiscounts;
-        
+    
+    /**
+     * Create a bill for user with net and category
+     * @param user the user
+     * @param net the net total 
+     * @param category the category
+     */
     public Bill(User user, BigDecimal net, Category category) {
         super();
         this.user = user;
@@ -28,6 +42,9 @@ public class Bill{
         this.category = category;
     }
     
+    /**
+     * @return it returns net payable
+     */
     public BigDecimal applyDiscounts() {
         netPayable = net;
         
@@ -76,7 +93,8 @@ public class Bill{
     public User getUser() {
         return user;
     }
-        public void setUser(User user) {
+    
+    public void setUser(User user) {
         this.user = user;
     }
 

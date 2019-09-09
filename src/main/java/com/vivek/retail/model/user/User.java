@@ -10,6 +10,10 @@ public class User {
     
     private UserType type;
    
+    /**
+     * @param customerSince
+     * @param type
+     */
     public User(Date customerSince, UserType type) {
         super();
         if(customerSince != null) {
@@ -18,6 +22,9 @@ public class User {
         this.type = type;
     }
 
+    /**
+     * @return
+     */
     public Date getCustomerSince() {
         Date since = this.customerSince;
         if(this.customerSince != null) {
@@ -30,6 +37,9 @@ public class User {
         return type;
     }
 
+    /**
+     * @param customerSince
+     */
     public void setCustomerSince(Date customerSince) {
         
         if(customerSince != null) {
