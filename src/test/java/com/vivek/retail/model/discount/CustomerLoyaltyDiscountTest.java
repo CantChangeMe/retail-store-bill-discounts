@@ -16,16 +16,16 @@ import org.junit.Test;
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
 import com.vivek.retail.app.constants.UserType;
-import com.vivek.retail.model.bill.Bill;
 import com.vivek.retail.model.user.User;
+import com.vivek.retail.model.userbill.UserBill;
 
-public class CustomerPeriodDiscountTest {
+public class CustomerLoyaltyDiscountTest {
     
-    private Bill bill;
+    private UserBill bill;
 
     private User user;
 
-    private CustomerPeriodDiscount discount;
+    private CustomerLoyaltyDiscount discount;
 
     @Before
     public void setUp() throws Exception {
@@ -34,19 +34,19 @@ public class CustomerPeriodDiscountTest {
 
         user = new User(date, UserType.EMPLOYEE);
 
-        bill = new Bill(user, new BigDecimal(450), Category.GROCERIES);
+        bill = new UserBill(user, new BigDecimal(450), Category.GROCERIES);
 
         Set<Category> categoriesWithNoPercentageDiscountlude = new HashSet<>();
         categoriesWithNoPercentageDiscountlude.add(Category.GROCERIES);
 
         discount = 
-                new CustomerPeriodDiscount(DiscountType.PERCENTAGE, new BigDecimal(5), categoriesWithNoPercentageDiscountlude, 24);
+                new CustomerLoyaltyDiscount(DiscountType.PERCENTAGE, new BigDecimal(5), categoriesWithNoPercentageDiscountlude, 24);
     }
 
     @Test
     public void testCustomerPeriodDiscountValid() {
-        CustomerPeriodDiscount discount = 
-                new CustomerPeriodDiscount(DiscountType.AMOUNT, new BigDecimal(5), null, 24);
+        CustomerLoyaltyDiscount discount = 
+                new CustomerLoyaltyDiscount(DiscountType.AMOUNT, new BigDecimal(5), null, 24);
         
         assertEquals(new Integer(24), discount.getCustomerSinceMonths());
         assertEquals(DiscountType.AMOUNT, discount.getType());
@@ -55,7 +55,7 @@ public class CustomerPeriodDiscountTest {
     
     @Test(expected = IllegalArgumentException.class)
     public void testCustomerPeriodDiscountInvalidDiscount() {
-         new CustomerPeriodDiscount(DiscountType.PERCENTAGE, null, null, 24);
+         new CustomerLoyaltyDiscount(DiscountType.PERCENTAGE, null, null, 24);
     }
     
     @Test

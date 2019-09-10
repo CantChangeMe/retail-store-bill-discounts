@@ -10,10 +10,10 @@ import java.util.Set;
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
 import com.vivek.retail.app.constants.UserType;
-import com.vivek.retail.model.discount.CustomerPeriodDiscount;
+import com.vivek.retail.model.discount.CustomerLoyaltyDiscount;
 import com.vivek.retail.model.discount.Discount;
-import com.vivek.retail.model.discount.NetMultiplesDiscount;
-import com.vivek.retail.model.discount.UserTypeDiscount;
+import com.vivek.retail.model.discount.NetMultiplesBasedDiscount;
+import com.vivek.retail.model.discount.UserTypeBasedDiscount;
 
 
 public class DiscountProviderServiceImpl implements DiscountProviderService {
@@ -28,7 +28,7 @@ public class DiscountProviderServiceImpl implements DiscountProviderService {
         super();
         
         alwaysApplicableDiscountsList = new ArrayList<>();
-        Discount discount = new NetMultiplesDiscount(new BigDecimal(5), null, 
+        Discount discount = new NetMultiplesBasedDiscount(new BigDecimal(5), null, 
                 new BigDecimal(100));
         
         alwaysApplicableDiscountsList.add(discount);
@@ -36,15 +36,15 @@ public class DiscountProviderServiceImpl implements DiscountProviderService {
         categoriesWithNoPercentageDiscount.add(Category.GROCERIES);
         
         
-        discount = new UserTypeDiscount(DiscountType.PERCENTAGE, 
+        discount = new UserTypeBasedDiscount(DiscountType.PERCENTAGE, 
                 new BigDecimal(30), categoriesWithNoPercentageDiscount, UserType.EMPLOYEE);
         mutuallyExclusiveDiscountsList.add(discount);
         
-        discount = new UserTypeDiscount(DiscountType.PERCENTAGE, 
+        discount = new UserTypeBasedDiscount(DiscountType.PERCENTAGE, 
                 new BigDecimal(10), categoriesWithNoPercentageDiscount, UserType.AFFILIATE);
         mutuallyExclusiveDiscountsList.add(discount);
         
-        discount = new CustomerPeriodDiscount(DiscountType.PERCENTAGE, 
+        discount = new CustomerLoyaltyDiscount(DiscountType.PERCENTAGE, 
                 new BigDecimal(5), categoriesWithNoPercentageDiscount, 24);
         mutuallyExclusiveDiscountsList.add(discount);        
     }

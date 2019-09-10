@@ -14,36 +14,36 @@ import org.junit.Test;
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
 import com.vivek.retail.app.constants.UserType;
-import com.vivek.retail.model.bill.Bill;
-import com.vivek.retail.model.discount.UserTypeDiscount;
+import com.vivek.retail.model.discount.UserTypeBasedDiscount;
 import com.vivek.retail.model.user.User;
+import com.vivek.retail.model.userbill.UserBill;
 
-public class UserTypeDiscountTest {
+public class UserTypeBasedDiscountTest {
     
-    private Bill bill;
+    private UserBill bill;
     
     private User user;
     
-    private UserTypeDiscount discount;
+    private UserTypeBasedDiscount discount;
 
     @Before
     public void setUp() throws Exception {
         
         user = new User(new Date(), UserType.EMPLOYEE);
         
-        bill = new Bill(user, new BigDecimal(450), Category.GROCERIES);
+        bill = new UserBill(user, new BigDecimal(450), Category.GROCERIES);
         
         Set<Category> exclude = new HashSet<>();
         exclude.add(Category.GROCERIES);
         
         discount = 
-                new UserTypeDiscount(DiscountType.PERCENTAGE, new BigDecimal(30), exclude, UserType.EMPLOYEE);
+                new UserTypeBasedDiscount(DiscountType.PERCENTAGE, new BigDecimal(30), exclude, UserType.EMPLOYEE);
     }
 
     @Test
     public void testUserTypeDiscountValid() {
-        UserTypeDiscount discount = 
-                new UserTypeDiscount(DiscountType.AMOUNT, new BigDecimal(10), null, UserType.AFFILIATE);
+        UserTypeBasedDiscount discount = 
+                new UserTypeBasedDiscount(DiscountType.AMOUNT, new BigDecimal(10), null, UserType.AFFILIATE);
         
         assertEquals(UserType.AFFILIATE, discount.getUserType());
         assertEquals(DiscountType.AMOUNT, discount.getType());
@@ -51,8 +51,8 @@ public class UserTypeDiscountTest {
     
     @Test
     public void testUserTypeDiscountDefaultType() {
-        UserTypeDiscount discount = 
-                new UserTypeDiscount(null, new BigDecimal(10), null, UserType.CUSTOMER);
+        UserTypeBasedDiscount discount = 
+                new UserTypeBasedDiscount(null, new BigDecimal(10), null, UserType.CUSTOMER);
         
         assertEquals(UserType.CUSTOMER, discount.getUserType());
         assertEquals(DiscountType.PERCENTAGE, discount.getType());

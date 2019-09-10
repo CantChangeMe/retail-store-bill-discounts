@@ -2,13 +2,13 @@ package com.vivek.retail.model.discount;
 
 import java.math.BigDecimal;
 
-import com.vivek.retail.model.bill.Bill;
+import com.vivek.retail.model.userbill.UserBill;
 
 
 public interface Discount {
     
-    public BigDecimal calculateDiscountOnTheBill(Bill bill);    
+    public BigDecimal calculateDiscountOnTheBill(UserBill bill);    
    
-    public boolean isDiscountApplicableOnTheBill(Bill bill);
+    public boolean isDiscountApplicableOnTheBill(UserBill bill);
 
 }

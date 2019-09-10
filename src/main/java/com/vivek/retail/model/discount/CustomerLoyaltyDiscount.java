@@ -7,9 +7,9 @@ import java.util.Set;
 
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
-import com.vivek.retail.model.bill.Bill;
+import com.vivek.retail.model.userbill.UserBill;
 
-public class CustomerPeriodDiscount extends GenericDiscount {
+public class CustomerLoyaltyDiscount extends GenericDiscount {
     
     private Integer customerSinceMonths;
     
@@ -19,7 +19,7 @@ public class CustomerPeriodDiscount extends GenericDiscount {
      * @param categoriesWithNoPercentageDiscount
      * @param customerSinceMonths
      */
-    public CustomerPeriodDiscount(DiscountType type, BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount,
+    public CustomerLoyaltyDiscount(DiscountType type, BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount,
             Integer customerSinceMonths) {
         
         super(type, discount, categoriesWithNoPercentageDiscount);
@@ -29,7 +29,7 @@ public class CustomerPeriodDiscount extends GenericDiscount {
     /**
      * Checks if the bill is eligible for discount.
      */
-    public boolean isDiscountApplicableOnTheBill(Bill bill) {
+    public boolean isDiscountApplicableOnTheBill(UserBill bill) {
         
         if((bill == null) || (bill.getUser() == null) 
                 || (bill.getUser().getCustomerSince() == null)) {

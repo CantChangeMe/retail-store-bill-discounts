@@ -1,4 +1,4 @@
-package com.vivek.retail.model.bill;
+package com.vivek.retail.model.userbill;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,12 +12,12 @@ import com.vivek.retail.model.user.User;
 /**
  * @author c_vivek.kumar
  *
- *This class Bill has information about user ,net amout ,bill category and different kind
+ *This class Bill has information about user ,net amount ,bill category and different kind
  *of discounts he is eligible for.
  */
-public class Bill{
+public class UserBill{
     
-    private User user;
+	private User user;
     
     private BigDecimal net;
     
@@ -35,7 +35,7 @@ public class Bill{
      * @param net the net total 
      * @param category the category
      */
-    public Bill(User user, BigDecimal net, Category category) {
+    public UserBill(User user, BigDecimal net, Category category) {
         super();
         this.user = user;
         this.net = net;

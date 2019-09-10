@@ -15,11 +15,11 @@ import org.junit.Test;
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
 import com.vivek.retail.app.constants.UserType;
-import com.vivek.retail.model.discount.CustomerPeriodDiscount;
+import com.vivek.retail.model.discount.CustomerLoyaltyDiscount;
 import com.vivek.retail.model.discount.Discount;
 import com.vivek.retail.model.discount.GenericDiscount;
-import com.vivek.retail.model.discount.NetMultiplesDiscount;
-import com.vivek.retail.model.discount.UserTypeDiscount;
+import com.vivek.retail.model.discount.NetMultiplesBasedDiscount;
+import com.vivek.retail.model.discount.UserTypeBasedDiscount;
 import com.vivek.retail.service.discount.DiscountProviderService;
 import com.vivek.retail.service.discount.DiscountProviderServiceImpl;
 
@@ -42,7 +42,7 @@ public class DiscountProviderServiceImplTest {
         
         assertEquals(1, discounts.size());
         
-        NetMultiplesDiscount discount = (NetMultiplesDiscount) discounts.get(0);
+        NetMultiplesBasedDiscount discount = (NetMultiplesBasedDiscount) discounts.get(0);
         
         validateDiscount(discount, new BigDecimal(5), DiscountType.AMOUNT, true);
         
@@ -57,7 +57,7 @@ public class DiscountProviderServiceImplTest {
 
         assertEquals(3, discounts.size());
         
-        UserTypeDiscount discount = (UserTypeDiscount) discounts.get(0);
+        UserTypeBasedDiscount discount = (UserTypeBasedDiscount) discounts.get(0);
         
         validateDiscount(discount, new BigDecimal(30), DiscountType.PERCENTAGE, false);
                 
@@ -66,7 +66,7 @@ public class DiscountProviderServiceImplTest {
         Set<Category> categoriesWithNoPercentageDiscountlude = discount.getCategoriesWithNoPercentageDiscount();        
         validateExclude(categoriesWithNoPercentageDiscountlude, Category.GROCERIES);
         
-        discount = (UserTypeDiscount) discounts.get(1);
+        discount = (UserTypeBasedDiscount) discounts.get(1);
         
         validateDiscount(discount, new BigDecimal(10), DiscountType.PERCENTAGE, false);
                 
@@ -76,7 +76,7 @@ public class DiscountProviderServiceImplTest {
         validateExclude(categoriesWithNoPercentageDiscountlude, Category.GROCERIES);
         
         
-        CustomerPeriodDiscount periodDiscount = (CustomerPeriodDiscount) discounts.get(2);
+        CustomerLoyaltyDiscount periodDiscount = (CustomerLoyaltyDiscount) discounts.get(2);
         
         validateDiscount(periodDiscount, new BigDecimal(5), DiscountType.PERCENTAGE, false);
                 

@@ -6,7 +6,7 @@ import java.util.Set;
 
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
-import com.vivek.retail.model.bill.Bill;
+import com.vivek.retail.model.userbill.UserBill;
 
 public abstract class GenericDiscount implements Discount {
     
@@ -43,7 +43,7 @@ public abstract class GenericDiscount implements Discount {
         return (categoriesWithNoPercentageDiscount == null) || (category == null) || !categoriesWithNoPercentageDiscount.contains(category) ;
     }
     
-    protected void validate(Bill bill) {
+    protected void validate(UserBill bill) {
         if((bill == null) || (bill.getNetPayable() == null)) {
             throw new IllegalArgumentException("discountable is missing or invalid");
         }
@@ -51,7 +51,7 @@ public abstract class GenericDiscount implements Discount {
     
 
     @Override
-    public BigDecimal calculateDiscountOnTheBill(Bill bill) {
+    public BigDecimal calculateDiscountOnTheBill(UserBill bill) {
         BigDecimal amount = null;
         
         validate(bill);

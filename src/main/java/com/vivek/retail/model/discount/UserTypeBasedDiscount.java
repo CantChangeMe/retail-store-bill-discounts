@@ -6,9 +6,9 @@ import java.util.Set;
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
 import com.vivek.retail.app.constants.UserType;
-import com.vivek.retail.model.bill.Bill;
+import com.vivek.retail.model.userbill.UserBill;
 
-public class UserTypeDiscount extends GenericDiscount {
+public class UserTypeBasedDiscount extends GenericDiscount {
     
     private UserType userType;
     
@@ -18,7 +18,7 @@ public class UserTypeDiscount extends GenericDiscount {
      * @param categoriesWithNoPercentageDiscount
      * @param userType
      */
-    public UserTypeDiscount(DiscountType type, BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount, UserType userType) {
+    public UserTypeBasedDiscount(DiscountType type, BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount, UserType userType) {
         super(type, discount, categoriesWithNoPercentageDiscount);
         if(userType == null) {
             throw new IllegalArgumentException("userType is required");
@@ -27,7 +27,7 @@ public class UserTypeDiscount extends GenericDiscount {
     }
 
     @Override
-    public boolean isDiscountApplicableOnTheBill(Bill bill) {
+    public boolean isDiscountApplicableOnTheBill(UserBill bill) {
         
         if((bill == null) || (bill.getUser() == null) 
                 || (bill.getUser().getType() == null)) {

@@ -6,9 +6,9 @@ import java.util.Set;
 
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
-import com.vivek.retail.model.bill.Bill;
+import com.vivek.retail.model.userbill.UserBill;
 
-public class NetMultiplesDiscount extends GenericDiscount {
+public class NetMultiplesBasedDiscount extends GenericDiscount {
     
     private BigDecimal netMultiples;
     
@@ -17,7 +17,7 @@ public class NetMultiplesDiscount extends GenericDiscount {
      * @param categoriesWithNoPercentageDiscount
      * @param netMultiples
      */
-    public NetMultiplesDiscount(BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount, 
+    public NetMultiplesBasedDiscount(BigDecimal discount, Set<Category> categoriesWithNoPercentageDiscount, 
             BigDecimal netMultiples) {
         
         super(DiscountType.AMOUNT, discount, categoriesWithNoPercentageDiscount);
@@ -31,7 +31,7 @@ public class NetMultiplesDiscount extends GenericDiscount {
     }
 
     @Override
-    public boolean isDiscountApplicableOnTheBill(Bill bill) {
+    public boolean isDiscountApplicableOnTheBill(UserBill bill) {
         
         validate(bill);
         boolean applicable = super.isCategoryApplicable(bill.getCategory());
@@ -45,7 +45,7 @@ public class NetMultiplesDiscount extends GenericDiscount {
     }
     
     @Override
-    public BigDecimal calculateDiscountOnTheBill(Bill bill) {
+    public BigDecimal calculateDiscountOnTheBill(UserBill bill) {
         BigDecimal amount = null;
         
         validate(bill);

@@ -20,17 +20,17 @@ import org.junit.Test;
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.DiscountType;
 import com.vivek.retail.app.constants.UserType;
-import com.vivek.retail.model.bill.Bill;
-import com.vivek.retail.model.discount.NetMultiplesDiscount;
+import com.vivek.retail.model.discount.NetMultiplesBasedDiscount;
 import com.vivek.retail.model.user.User;
+import com.vivek.retail.model.userbill.UserBill;
 
-public class NetMultiplesDiscountTest {
+public class NetMultiplesBasedDiscountTest {
 
-    private Bill bill;
+    private UserBill bill;
 
     private User user;
 
-    private NetMultiplesDiscount discount;
+    private NetMultiplesBasedDiscount discount;
 
     @Before
     public void setUp() throws Exception {
@@ -39,19 +39,19 @@ public class NetMultiplesDiscountTest {
 
         user = new User(date, UserType.EMPLOYEE);
 
-        bill = new Bill(user, new BigDecimal(450), Category.GROCERIES);
+        bill = new UserBill(user, new BigDecimal(450), Category.GROCERIES);
 
         Set<Category> exclude = new HashSet<>();
         exclude.add(Category.GROCERIES);
 
         discount = 
-                new NetMultiplesDiscount(new BigDecimal(5), exclude, new BigDecimal(100));
+                new NetMultiplesBasedDiscount(new BigDecimal(5), exclude, new BigDecimal(100));
     }
 
     @Test
     public void testNetMultiplesDiscountValid() {
-        NetMultiplesDiscount discount = 
-                new NetMultiplesDiscount(new BigDecimal(5), null, new BigDecimal(100));
+        NetMultiplesBasedDiscount discount = 
+                new NetMultiplesBasedDiscount(new BigDecimal(5), null, new BigDecimal(100));
 
         assertEquals(new BigDecimal(100), discount.getNetMultiples());
         assertEquals(DiscountType.AMOUNT, discount.getType());
@@ -60,18 +60,18 @@ public class NetMultiplesDiscountTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testNetMultiplesDiscountInvalidDiscount() {
-        new NetMultiplesDiscount(null, null, new BigDecimal(100));
+        new NetMultiplesBasedDiscount(null, null, new BigDecimal(100));
     }
 
 
     @Test(expected = IllegalArgumentException.class)
     public void testNetMultiplesDiscountNullNetMultiples() {
-        new NetMultiplesDiscount(new BigDecimal(5), null, null);
+        new NetMultiplesBasedDiscount(new BigDecimal(5), null, null);
     }
     
     @Test(expected = IllegalArgumentException.class)
     public void testNetMultiplesDiscountZeroNetMultiples() {
-        new NetMultiplesDiscount(new BigDecimal(5), null, BigDecimal.ZERO);
+        new NetMultiplesBasedDiscount(new BigDecimal(5), null, BigDecimal.ZERO);
     }
 
 

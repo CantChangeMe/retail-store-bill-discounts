@@ -12,14 +12,15 @@ import org.junit.Test;
 import com.vivek.retail.app.constants.Category;
 import com.vivek.retail.app.constants.UserType;
 import com.vivek.retail.model.user.User;
+import com.vivek.retail.model.userbill.UserBill;
 import com.vivek.retail.service.discount.DiscountProviderService;
 import com.vivek.retail.service.discount.DiscountProviderServiceImpl;
 
-public class BillTest {
+public class UserBillTest {
 
 	private DiscountProviderService discountProviderService;
 
-	private Bill bill;
+	private UserBill bill;
 
 	private User customer;
 
@@ -31,7 +32,7 @@ public class BillTest {
 		Date date = DateUtils.addYears(new Date(), -3);
 		customer = new User(date, UserType.EMPLOYEE);
 		
-		bill = new Bill(customer, new BigDecimal(450), Category.GROCERIES);
+		bill = new UserBill(customer, new BigDecimal(450), Category.GROCERIES);
 		
 		bill.setAlwaysApplicable(discountProviderService.getAlwayApplicableDiscounts());
 		bill.setMutuallyExclusive(discountProviderService.getMutuallyExclusiveDiscounts());
