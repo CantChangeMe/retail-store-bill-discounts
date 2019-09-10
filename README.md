@@ -22,7 +22,7 @@ This project implements different kinds of discounts for a small retail website.
 	- I have been able to generate code coverage of upto 93% as of now.
 - Class diagram
 
-![alt text](https://github.com/CantChangeMe/retail-store-bill-discounts.git/class-diagram/ClassDiagram.JPG)
+![Class Diagram](https://github.com/CantChangeMe/retail-store-bill-discounts/blob/master/class-diagram/ClassDiagram.JPG)
 
 
 # Assumption Made:
