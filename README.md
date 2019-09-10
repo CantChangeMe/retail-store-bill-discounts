@@ -34,4 +34,4 @@ This project implements different kinds of discounts for a small retail website.
 
 3.While applying multiple discounts,Lets say for two discounts ,the second discount is applied on discounted amount.
 
-4.The current system can enhanced to add more details in the system. like adding Product and product related data.
+4.The current system can be enhanced to add more details in the system. like adding Product and product related data.
